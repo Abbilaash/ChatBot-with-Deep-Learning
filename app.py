@@ -1,11 +1,8 @@
 # Importing the needed modules
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
-import numpy
-import tensorflow
-import random
-import json
-import tflearn
+import tensorflow,tflearn
+import random,json,numpy
 
 # Initializing the stemmer
 stemmer = LancasterStemmer()
@@ -15,10 +12,9 @@ with open('intents.json') as file:
     data = json.load(file)
 
 # Extracting the data and splitting the data
-words = []
-labels = []
-docs_x = []    # list of all the patterns
-docs_y = []    # list of all the tags for each pattern in docs_x
+# docs_x will contain all the patterns
+# docs_y is a list of all the tags for each pattern in docs_x
+words,labels,docs_x,docs_y = [],[],[],[]
 
 for intent in data['intents']:
     for pattern in intent['patterns']:
@@ -29,6 +25,11 @@ for intent in data['intents']:
         
     if intent['tag'] not in labels:
         labels.append(intent['tag'])
+
+# Stemming the words -> creating the stemmed volabulary
+words = [stemmer.stem(w.lower()) for w in words if w not in ['?','!']]
+words = sorted(list(set(words)))
+labels = sorted(labels)
 
 
 
