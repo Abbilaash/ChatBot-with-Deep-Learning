@@ -1,4 +1,6 @@
 numpy
 nltk
+json
+random
 tensorflow
 tflearn

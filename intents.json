@@ -11,5 +11,9 @@
     {"tag": "thanks",
      "patterns": ["Thanks", "Thank you", "That's helpful"],
      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {"tag": "inquire",
+     "patterns": ["how are you", "are you good"],
+     "responses": ["I am gud! How about you?", "I am great! Thanks!"]
     }
 ]}
